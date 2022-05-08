@@ -16,6 +16,7 @@ body{
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
+    margin: 2rem;
  
     
 }
@@ -26,9 +27,14 @@ body{
     align-items: center;
     width: 7rem;
     height: 7rem;
-    border: 2px solid black;
     font-size: 3rem;
 }
+#cell1, #cell2, #cell3, #cell4, #cell5, #cell6{
+   border-bottom: 5px groove rgb(255, 3, 242);  
+}
+#cell1, #cell4, #cell7, #cell2, #cell5, #cell8{
+    border-right: 5px groove rgb(255, 3, 242);  
+ }
 
 .startWindow{
     width:20rem;
@@ -49,5 +55,9 @@ body{
     display: flex;
     gap:10rem;
 }
-
+.gameDisplay{
+    left:5rem;
+    position: absolute;
+    font-size: 3rem;
+}
 

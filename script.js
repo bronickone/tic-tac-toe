@@ -8,20 +8,23 @@ const Player = (name) => {
     // const getName = () => name;
     return {name}
 }
+const cells = document.querySelectorAll('.cell')
+    const cellsArr = Array.from(cells)
+    const display = document.querySelector('.gameDisplay')
+    const gameBoard = document.querySelector('.gameBoard')
 
-const displayFill = (() => {
+const displayFill = () => {
     
     let field = [1,2,3,4,5,6,7,8,9]
     
     let gameArr = ['x','o','x','o','x','o','x','o','x']
     
-    const cells = document.querySelectorAll('.cell')
-    const cellsArr = Array.from(cells)
-    const display = document.querySelector('.gameDisplay')
-    const gameBoard = document.querySelector('.gameBoard')
+    
     
     
     cellsArr.forEach((elm,i) => {
+        
+        elm.textContent = ''
         cellListener = () => { 
             elm.textContent = gameArr[0]
             field[i] = gameArr[0]
@@ -45,19 +48,28 @@ const displayFill = (() => {
                     }
             })()
         }
-    
+        elm.removeEventListener('click', cellListener, { once: true })
         elm.addEventListener('click', cellListener, { once: true })    
     })
-    
-    const pvpButton = document.querySelector('.pvp')
-        const startWindow = document.querySelector('.startWindow')
+}
 
-        pvpButton.addEventListener('click', () => {
-            gameBoard.style.zIndex = '1';
-            startWindow.style.display = 'none'
-        })
-    
-})()
+const pvpButton = document.querySelector('.pvp')
+const startWindow = document.querySelector('.startWindow')
+
+pvpButton.addEventListener('click', () => {
+    gameBoard.style.zIndex = '1';
+    startWindow.style.display = 'none'
+    displayFill()
+})
+
+
+const restart = document.querySelector('.restart')
+
+restart.addEventListener('click', () =>{
+    displayFill()
+
+})
+
 
 
 
